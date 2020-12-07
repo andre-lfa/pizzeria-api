@@ -14,19 +14,23 @@ export class OrderItemService {
     return createOrderItem.save();
   }
 
-  findAll() {
-    return `This action returns all orderItem`;
+  async findAll(): Promise<OrderItem[]> {
+    return this.orderItemsModel.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} orderItem`;
+  async findOne(id: string): Promise<OrderItem> {
+    return this.orderItemsModel.findOne({_id : id}).lean();
   }
 
-  update(id: number, updateOrderItemDto: CreateOrderItemDto) {
-    return `This action updates a #${id} orderItem`;
+  async update(id: string, updateOrderItemDto: CreateOrderItemDto): Promise<OrderItem> {
+    return this.orderItemsModel.findOneAndUpdate({_id: id}, updateOrderItemDto, {
+      new: true,
+      upsert: false,
+      runValidators: true
+    }).lean();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} orderItem`;
+  remove(id: string) {
+    return this.orderItemsModel.findOneAndDelete({_id: id});
   }
 }

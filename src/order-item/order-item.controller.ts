@@ -20,16 +20,16 @@ export class OrderItemController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.orderItemService.findOne(+id);
+    return this.orderItemService.findOne(id);
   }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateOrderItemDto: CreateOrderItemDto) {
-    return this.orderItemService.update(+id, updateOrderItemDto);
+    return this.orderItemService.update(id, updateOrderItemDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.orderItemService.remove(+id);
+    return this.orderItemService.remove(id);
   }
 }
