@@ -30,7 +30,7 @@ export class PizzasService {
     });
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} pizza`;
+  async remove(id: string): Promise<Pizzas> {
+    return this.pizzasModel.findOneAndDelete({_id: id});
   }
 }
