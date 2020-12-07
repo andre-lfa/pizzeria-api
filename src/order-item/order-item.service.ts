@@ -1,10 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateOrderItemDto } from './dto/create-order-item.dto';
+import { OrderItem } from './interfaces/order-item.interface';
 
 @Injectable()
 export class OrderItemService {
-  create(createOrderItemDto: CreateOrderItemDto) {
-    return 'This action adds a new orderItem';
+  constructor(
+    @InjectModel('OrderItems') private readonly orderItemsModel: Model<OrderItem>
+  ) {}
+  async create(createOrderItemDto: CreateOrderItemDto): Promise<OrderItem> {
+    const createOrderItem = new this.orderItemsModel(createOrderItemDto)
+    return createOrderItem.save();
   }
 
   findAll() {
