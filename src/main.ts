@@ -9,7 +9,6 @@ async function bootstrap() {
     .setTitle('Pizzeria API')
     .setDescription('Pizzeria API for creating and ordering pizzas')
     .setVersion('1.0')
-    .addTag('pizzaria')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
