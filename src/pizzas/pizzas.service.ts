@@ -7,7 +7,7 @@ import { Pizzas } from './interfaces/pizza.interface';
 @Injectable()
 export class PizzasService {
   constructor(
-    @InjectModel('Pizzas') private readonly pizzasModel: Model<Pizzas>,
+    @InjectModel('Pizzas') private readonly pizzasModel: Model<Pizzas>
   ){}
   async create(createPizzaDto: CreatePizzaDto): Promise<Pizzas> {
     const createPizza = new this.pizzasModel(createPizzaDto);
