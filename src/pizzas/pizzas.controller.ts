@@ -18,16 +18,16 @@ export class PizzasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.pizzasService.findOne(+id);
+    return this.pizzasService.findOne(id);
   }
 
   @Put(':id')
   update(@Param('id') id: string) {
-    return this.pizzasService.update(+id);
+    return this.pizzasService.update(id);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.pizzasService.remove(+id);
+    return this.pizzasService.remove(id);
   }
 }

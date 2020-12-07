@@ -18,15 +18,15 @@ export class PizzasService {
     return this.pizzasModel.find({}).lean();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} pizza`;
+  async findOne(id: string): Promise<Pizzas> {
+    return this.pizzasModel.findOne({ _id: id}).lean();
   }
 
-  update(id: number) {
+  update(id: string) {
     return `This action updates a #${id} pizza`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} pizza`;
   }
 }
