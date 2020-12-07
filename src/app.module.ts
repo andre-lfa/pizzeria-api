@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PizzasModule } from './pizzas/pizzas.module';
+import { OrderItemModule } from './order-item/order-item.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { PizzasModule } from './pizzas/pizzas.module';
       useCreateIndex: true,
       useFindAndModify: false
     }),
-    PizzasModule
+    PizzasModule,
+    OrderItemModule
   ],
   controllers: [AppController],
   providers: [AppService],
