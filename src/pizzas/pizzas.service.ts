@@ -22,8 +22,12 @@ export class PizzasService {
     return this.pizzasModel.findOne({ _id: id}).lean();
   }
 
-  update(id: string) {
-    return `This action updates a #${id} pizza`;
+  async update(id: string, updatePizza: any): Promise<Pizzas> {
+    return this.pizzasModel.findOneAndUpdate({ _id: id}, updatePizza, {
+      new: true,
+      upsert: false,
+      runValidators: true
+    });
   }
 
   remove(id: string) {

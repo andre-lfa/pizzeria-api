@@ -22,8 +22,8 @@ export class PizzasController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string) {
-    return this.pizzasService.update(id);
+  update(@Param('id') id: string, @Body() updatePizza: CreatePizzaDto) {
+    return this.pizzasService.update(id, updatePizza);
   }
 
   @Delete(':id')
