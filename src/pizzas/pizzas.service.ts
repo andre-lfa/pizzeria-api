@@ -9,14 +9,13 @@ export class PizzasService {
   constructor(
     @InjectModel('Pizzas') private readonly pizzasModel: Model<Pizzas>,
   ){}
-  create(createPizzaDto: CreatePizzaDto): Promise<Pizzas> {
+  async create(createPizzaDto: CreatePizzaDto): Promise<Pizzas> {
     const createPizza = new this.pizzasModel(createPizzaDto);
     return createPizza.save();
   }
 
-  findAll() {
-    const pizzas = this.pizzasModel.find();
-    return pizzas;
+  async findAll(): Promise<Pizzas[]> {
+    return this.pizzasModel.find({}).lean();
   }
 
   findOne(id: number) {
