@@ -15,7 +15,8 @@ export class PizzasService {
   }
 
   findAll() {
-    return `This action returns all pizzas`;
+    const pizzas = this.pizzasModel.find();
+    return pizzas;
   }
 
   findOne(id: number) {
