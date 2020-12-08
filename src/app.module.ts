@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PizzasModule } from './pizzas/pizzas.module';
 import { OrderItemModule } from './order-item/order-item.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { OrderItemModule } from './order-item/order-item.module';
       useFindAndModify: false
     }),
     PizzasModule,
-    OrderItemModule
+    OrderItemModule,
+    OrderModule
   ],
   controllers: [AppController],
   providers: [AppService],
