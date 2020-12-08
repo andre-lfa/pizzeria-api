@@ -14,4 +14,24 @@ export class OrderService {
         const createForms = new this.ordersModel(createOrderDto);
         return createForms.save();
     }
+
+    async findAll(): Promise<Order[]> {
+        return this.ordersModel.find({}).lean()
+    }
+
+    async findOne(id: string): Promise<Order> {
+        return this.ordersModel.findOne({_id: id }).lean();
+    }
+
+    async remove(id: any): Promise<Order> {
+        return this.ordersModel.findOneAndRemove({ _id: id })
+    }
+
+    async update(id: string, updateOrder: any): Promise<Order> {
+        return this.ordersModel.findOneAndUpdate({ _id: id}, updateOrder, {
+          new: true,
+          upsert: false,
+          runValidators: true
+        });
+      }
 }
