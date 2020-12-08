@@ -3,7 +3,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PizzasModule } from './pizzas/pizzas.module';
-import { OrderItemModule } from './order-item/order-item.module';
 import { OrderModule } from './order/order.module';
 
 @Module({
@@ -15,7 +14,6 @@ import { OrderModule } from './order/order.module';
       useFindAndModify: false
     }),
     PizzasModule,
-    OrderItemModule,
     OrderModule
   ],
   controllers: [AppController],
