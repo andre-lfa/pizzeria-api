@@ -32,4 +32,9 @@ export class OrderController {
   remove(@Param('id') id: string) {
     return this.orderService.remove(id);
   }
+
+  @Put("addOrderItem/:id")
+    async addLink(@Param('id') id: string, @Body() body: CreateOrderDto): Promise<any> {
+        return await this.orderService.addItemsToOrder(id, body)
+    }
 }

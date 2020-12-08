@@ -34,4 +34,16 @@ export class OrderService {
           runValidators: true
         });
       }
+    
+      async addItemsToOrder(id: any, body: CreateOrderDto): Promise<any> {
+        return await this.ordersModel.findOneAndUpdate({ _id: id }, {
+            $push: {
+                order: {
+                    $each: body.order
+                }
+            }
+        }, {
+            new: true
+        })
+    }
 }
