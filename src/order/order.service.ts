@@ -46,4 +46,16 @@ export class OrderService {
             new: true
         })
     }
+
+    async removeOrderItem(id: any, orderId: any): Promise<any> {
+        return await this.ordersModel.findOneAndUpdate({_id: id}, {
+            $pull: {
+                order: {
+                    _id : orderId
+                }
+            }
+        }, {
+            new: true
+        });
+    }
 }

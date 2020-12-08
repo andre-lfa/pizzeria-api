@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderService } from './order.service';
@@ -34,7 +34,12 @@ export class OrderController {
   }
 
   @Put("addOrderItem/:id")
-    async addLink(@Param('id') id: string, @Body() body: CreateOrderDto): Promise<any> {
-        return await this.orderService.addItemsToOrder(id, body)
-    }
+    async addOrderItem(@Param('id') id: string, @Body() body: CreateOrderDto): Promise<any> {
+        return await this.orderService.addItemsToOrder(id, body);
+  }
+
+  @Put("removeOrderItem/:id")
+    async removeOrderItem(@Param('id') id: string, @Query('orderID') orderID: string): Promise<any> {
+        return await this.orderService.removeOrderItem(id, orderID);
+  }
 }
